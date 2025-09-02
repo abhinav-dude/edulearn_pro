@@ -2,17 +2,23 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
     {
-        _id: {type: String, required: true},
-        name: {type: String, required: true},
-        email: {type: String, required: true},
-        imageUrl: {type: String, required: true},
+        _id: { type: String, required: true }, // Keep String if using Clerk user IDs
+        name: { type: String, required: true },
+        email: { type: String, required: true, unique: true }, // Add unique constraint
+        imageUrl: { type: String, required: false }, // Make optional with default
         enrolledCourses: [
             {
-                type: mongoose.Schema.Types.ObjectId,
+                type: String, // Changed to String to match your _id type
                 ref: 'Course'
             }
         ],
-    }, {timestamps: true});
-    const User = mongoose.model('User', userSchema);
+    }, 
+    { 
+        timestamps: true,
+        _id: false // Disable automatic ObjectId generation since using custom String _id
+    }
+);
 
-    export default User
+const User = mongoose.model('User', userSchema);
+
+export default User;
