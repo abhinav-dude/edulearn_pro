@@ -64,7 +64,7 @@ const CourseDetails = () => {
   const [courseData, setCourseData] = useState(null);
   const [openSections, setOpenSections] = useState({});
   const [playerId, setPlayerId] = useState(null);
-  const [isAlreadyEnrolled, setIsAlreadyEnrolled] = useState(false); // TODO
+  const [isAlreadyEnrolled, setIsAlreadyEnrolled] = useState(false);
 
   useEffect(() => {
     if (!allCourses.length) return;

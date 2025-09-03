@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useUser, UserButton } from '@clerk/clerk-react';
+import { useUser, UserButton, useSignIn } from '@clerk/clerk-react';
 import { assets } from '../../assets/assets';
 
 const Navbar = () => {
   const location = useLocation();
   const { user } = useUser();
+  const { openSignIn } = useSignIn();
   const isCourseListPage = location.pathname.includes('/course-list');
 
   return (
